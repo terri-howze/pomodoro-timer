@@ -20,26 +20,7 @@ export default function Selection() {
 
         <div className=" bg-slate-50 m-5">
           Study timer
-          {/* Box Options for number of cycles*/}
-          <div className="flex">
-            Cycles
-            <a onClick={() => setCycles(1)}><div tabIndex="0" className="pl-2 size-12  bg-gray-50 hover:bg-red-500 active:bg-red-500">3</div></a>
-            <a onClick={() => setCycles(5)}><div tabIndex="0" className="pl-2 size-12  bg-gray-50 hover:bg-red-500 active:bg-red-500">5</div></a>
-            <a onClick={() => setCycles(7)}><div tabIndex="0" className="pl-2 size-12  bg-gray-50 hover:bg-red-500 active:bg-red-500">7</div></a>
-          </div>
-          {cycles}
-          <div>
-            {/* Box Options for number of Short break time*/}
-            <div className="flex">
-              Short Break
-              <a onClick={() => setShortBreak(1)}><div tabIndex="0" className="pl-2 size-12  bg-gray-50 hover:bg-red-500 active:bg-red-500">5</div></a>
-              <a onClick={() => setShortBreak(7)}><div tabIndex="0" className="pl-2 size-12  bg-gray-50 hover:bg-red-500 active:bg-red-500">7</div></a>
-              <a onClick={() => setShortBreak(10)}><div tabIndex="0" className="pl-2 size-12  bg-gray-50 hover:bg-red-500 active:bg-red-500">10</div></a>
-            </div>
-            {shortBreak}
-          </div>
 
-          {longBreak}
         </div>
         <button className="w-40 h-20 bg-gray-200 border-2 border-gray-400 shadow-lg rounded-lg hover:bg-gray-300 active:shadow-none transition" onClick={() => router.push('timerpage/')}>Start</button>
       </div>

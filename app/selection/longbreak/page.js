@@ -7,6 +7,14 @@ export default function longBreak() {
     const setLongBreak = useStateStore((state) => state.setLongBreak)
     const router = useRouter()
 
+    const nextPage = () => {
+        router.push("timerpage/")
+    }
+
+    const previousPage = () => {
+        router.push("shortbreak/")
+    }
+
     return (
         <>
             <div>
@@ -19,6 +27,14 @@ export default function longBreak() {
                     <a onClick={() => setLongBreak(20)}><div className="size-12 bg-blue-400">20</div></a>
                     <a onClick={() => setLongBreak(25)}><div className="size-12 bg-lime-200">25</div></a>
                 </div>
+
+            </div>
+            <div>
+                <button className='bg-slate-950' onClick={previousPage}></button>
+
+            </div>
+            <div>
+                <button className='bg-slate-950' onClick={nextPage}></button>
             </div>
         </>
     )
