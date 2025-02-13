@@ -2,7 +2,9 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-:root {}
+:root {
+  background-color: #9D9DEA;
+}
 
 @media (prefers-color-scheme: dark) {
   :root {}

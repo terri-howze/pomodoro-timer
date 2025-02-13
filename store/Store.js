@@ -14,6 +14,6 @@ export const useStateStore = create((set) => ({
     //long break state + functions
     longBreak: 0,
     setLongBreak: (longBreakTime) => set({ longBreak: longBreakTime }),
-    resetShortBreak: () => set({ longBreak: 0 })
+    resetLongBreak: () => set({ longBreak: 0 })
 
 }))

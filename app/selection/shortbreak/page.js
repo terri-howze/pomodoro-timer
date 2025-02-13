@@ -1,5 +1,5 @@
 "use client";
-import { useStateStore } from '../../store/Store'
+import { useStateStore } from "@/store/Store";
 import { useRouter } from "next/navigation";
 
 export default function longBreak() {
@@ -30,11 +30,11 @@ export default function longBreak() {
 
             </div>
             <div>
-                <button className='bg-slate-950' onClick={previousPage}></button>
+                <button className='bg-slate-950 text-gray-50' onClick={previousPage}>Previous</button>
 
             </div>
             <div>
-                <button className='bg-slate-950' onClick={nextPage}></button>
+                <button className='bg-slate-950 text-gray-50' onClick={nextPage}>Next</button>
             </div>
         </>
     )

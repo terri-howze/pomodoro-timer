@@ -22,7 +22,7 @@ export default function Selection() {
           Study timer
 
         </div>
-        <button className="w-40 h-20 bg-gray-200 border-2 border-gray-400 shadow-lg rounded-lg hover:bg-gray-300 active:shadow-none transition" onClick={() => router.push('timerpage/')}>Start</button>
+        <button className="w-40 h-20 bg-gray-200 border-2 border-gray-400 shadow-lg rounded-lg hover:bg-gray-300 active:shadow-none transition" onClick={() => router.push("selection/cycles/")}>Start</button>
       </div>
     </>
   );

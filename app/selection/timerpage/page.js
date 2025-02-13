@@ -1,6 +1,6 @@
 "use client";
 import React from 'react'
-import { useStateStore } from '../../store/Store'
+import { useStateStore } from '@/store/Store';
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
@@ -15,6 +15,9 @@ export default function page() {
   const [timeInMinutes, setTimeInMinutes] = useState(0)
   const [timeInSeconds, setTimeInSeconds] = useState(0)
   const router = useRouter()
+  const resetCycles = useStateStore((state) => state.resetCycles)
+  const resetShortBreak = useStateStore((state) => state.resetShortBreak)
+  const resetLongBreak = useStateStore((state) => state.resetLongBreak)
 
   function countdownTimer(countdownTime) {
     return new Promise((resolve, reject) => {
@@ -40,7 +43,10 @@ export default function page() {
       }
     }
     await countdownTimer(longBreak)
-    router.push('selection/')
+    resetCycles()
+    resetShortBreak()
+    resetLongBreak()
+    router.push('/')
   }
 
   useEffect(() => {
@@ -52,7 +58,6 @@ export default function page() {
         <h3>
           {timeInMinutes}:{timeInSeconds}
         </h3>
-        <button className="w-40 h-20 bg-gray-200 border-2 border-gray-400 shadow-lg rounded-lg hover:bg-gray-300 active:shadow-none transition" onClick={() => router.push('selection/')}>Start</button>
 
       </div>
     </>
