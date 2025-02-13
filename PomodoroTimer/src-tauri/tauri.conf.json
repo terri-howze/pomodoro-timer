@@ -13,8 +13,8 @@
     "windows": [
       {
         "title": "pomodorotimer",
-        "width": 154.08,
-        "height": 85.92,
+        "width": 800,
+        "height": 600,
         "fullscreen": false
       }
     ],
