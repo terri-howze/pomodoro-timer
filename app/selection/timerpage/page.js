@@ -55,7 +55,7 @@ export default function page() {
   return (
     <>
       <div>
-        <h3>
+        <h3 className='font-pixel'>
           {timeInMinutes}:{timeInSeconds}
         </h3>
 

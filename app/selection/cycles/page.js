@@ -17,18 +17,31 @@ export default function cycles() {
 
     return (
         <>
-            <div>
+            
+            
+            
+      <div className="w-touchscreenW h-touchscreenH bg-lavender">
+        <div className="m-5 font-pixel text-4xl drop-shadow-2xl">
+          Productivity Jam
+        </div>
+        
+        <div className='bg-overlay w-innerboxW h-innerboxH'>
+        <div>
                 <h2>Cycles</h2>
             </div>
-            <div>
-                {/* Box Options for number of long break time*/}
-                <div className="flex">
+            <div className="flex">
                     <a onClick={() => setCycles(3)}><div className="pl-2 size-12 bg-gray-50">3</div></a>
                     <a onClick={() => setCycles(4)}><div className="size-12 bg-blue-400">4</div></a>
                     <a onClick={() => setCycles(5)}><div className="size-12 bg-lime-200">5</div></a>
                 </div>
-
-            </div>
+        <div className='flex justify-end bottom-0 w-innerboxW h-innerboxH'>
+ 
+        <img className={`h-imageH transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`} src='/pixel.png'></img>
+        </div>
+        </div>
+      </div>
+  
+  
             <div>
                 <button className='bg-slate-950 text-gray-50' onClick={previousPage}>Previous</button>
 
@@ -37,5 +50,6 @@ export default function cycles() {
                 <button className='bg-slate-950 text-gray-50' onClick={nextPage}>Next</button>
             </div>
         </>
-    )
+    
+)
 }
