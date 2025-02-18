@@ -7,6 +7,7 @@ import { useEffect } from "react";
 export default function cycles() {
 
     const setCycles = useStateStore((state) => state.setCycles)
+    cycles = useStateStore((state) => state.cycles)
     const router = useRouter()
     const [visible, setVisible] = useState(false)
 
@@ -19,7 +20,7 @@ export default function cycles() {
     }
 
     const previousPage = () => {
-        router.push("selection")
+        router.push("/")
     }
 
     return (
@@ -32,26 +33,23 @@ export default function cycles() {
 
                     <div className='bg-overlay w-innerboxW h-innerboxH '>
                         <div className='flex justify-end bottom-0 w-innerboxW h-innerboxH'>
-                            <h2 className='pr-4 mt-20 font-pixel text-3xl'>Cycles</h2>
-                            <div className="flex">
-                                <a onClick={() => setCycles(3)}><div className="pl-2 size-12 bg-gray-50">3</div></a>
-                                <a onClick={() => setCycles(4)}><div className="size-12 bg-blue-400">4</div></a>
-                                <a onClick={() => setCycles(5)}><div className="size-12 bg-lime-200">5</div></a>
+                            <div className="w-innerboxW h-innerboxH text-center">
+                            <h2 className='pr-4 mt-20 font-pixel text-4xl'>Cycles</h2>
+                            <div className="flex justify-evenly pt-36">
+                                <a onClick={() => setCycles(3)}><div tabIndex="0" className={` pl-2 size-20 rounded-lg text-center active:bg-violet-700 ${cycles === 3 ? 'bg-violet-700' : 'bg-buttons'}`}>3</div></a>
+                                <a onClick={() => setCycles(4)}><div tabIndex="0" className={` pl-2 size-20 rounded-lg text-center active:bg-violet-700 ${cycles === 4 ? 'bg-violet-700' : 'bg-buttons'}`}>4</div></a>
+                                <a onClick={() => setCycles(5)}><div tabIndex="0" className={` pl-2 size-20 rounded-lg text-center active:bg-violet-700 ${cycles === 5 ? 'bg-violet-700' : 'bg-buttons'}`}>5</div></a>
+                            </div>
+                            <div className="h-innerboxH bottom-0">
+                                <button>Previous</button>
+                                <button>Next</button>
+                                </div>
                             </div>
                             <img className={`h-imageH transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`} src='/pixel.png'></img>
                         </div>
                     </div>
                 </div>
             </>
-
-
-            <div>
-                <button className='bg-slate-950 text-gray-50' onClick={previousPage}>Previous</button>
-
-            </div>
-            <div>
-                <button className='bg-slate-950 text-gray-50' onClick={nextPage}>Next</button>
-            </div>
         </>
 
     )

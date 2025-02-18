@@ -23,11 +23,11 @@ export default function Selection() {
   }
 
   return (
-    <> <div className="m-5 font-pixel text-4xl drop-shadow-2xl mb-0">
+    <> 
+    <div className="m-5 font-pixel text-4xl drop-shadow-2xl mb-0">
       Productivity Jam
     </div>
       <div className="w-touchscreenW h-touchscreenH bg-lavender flex justify-center">
-
 
         <div className='bg-overlay w-innerboxW h-innerboxH '>
           <div className='flex justify-end bottom-0 w-innerboxW h-innerboxH'>

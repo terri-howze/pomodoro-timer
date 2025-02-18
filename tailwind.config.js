@@ -15,7 +15,8 @@ module.exports = {
       },
       colors:{
         'lavender': '#9D9DEA',
-        'overlay': '#E6E6F9'
+        'overlay': '#E6E6F9',
+        'buttons': '#5B5BDA'
       },
       spacing:{
         'touchscreenW' : '1024px',
