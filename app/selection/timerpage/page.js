@@ -72,8 +72,8 @@ export default function page() {
         <a onClick={homePage}><div className="m-5 font-pixel text-4xl drop-shadow-2xl mb-0">
           Productivity Jam
         </div></a>
-        <div>Pause</div>
-        <div>Resume</div>
+        <a><div>Pause</div></a>
+        <a><div>Resume</div></a>
       </div>
       <div className={`w-touchscreenW h-touchscreenH bg-lavender flex justify-center`}>
 
