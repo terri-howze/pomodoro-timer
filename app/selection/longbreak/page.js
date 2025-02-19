@@ -1,11 +1,17 @@
 "use client";
 import { useStateStore } from "@/store/Store";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export default function longBreak() {
     const longBreak = useStateStore((state) => state.longBreak)
     const setLongBreak = useStateStore((state) => state.setLongBreak)
     const router = useRouter()
+    const [visible, setVisible] = useState(false)
+    const resetCycles = useStateStore((state) => state.resetCycles)
+    const resetShortBreak = useStateStore((state) => state.resetShortBreak)
+    const resetLongBreak = useStateStore((state) => state.resetLongBreak)
 
     const nextPage = () => {
         router.push("timerpage/")
@@ -15,27 +21,47 @@ export default function longBreak() {
         router.push("shortbreak/")
     }
 
+    const homePage = () => {
+        resetCycles()
+        resetShortBreak()
+        resetLongBreak()
+        router.push("/")
+    }
+
+    useEffect(() => {
+        setTimeout(() => setVisible(true), 100); // Delay for effect
+    }, []);
     return (
         <>
-            <div>
-                <h2>Long Break Time</h2>
-            </div>
-            <div>
-                {/* Box Options for number of long break time*/}
-                <div className="flex">
-                    <a onClick={() => setLongBreak(15)}><div className="pl-2 size-12 bg-gray-50">15</div></a>
-                    <a onClick={() => setLongBreak(20)}><div className="size-12 bg-blue-400">20</div></a>
-                    <a onClick={() => setLongBreak(25)}><div className="size-12 bg-lime-200">25</div></a>
+            <a onClick={homePage}><div className="m-5 font-pixel text-4xl drop-shadow-2xl mb-0">
+                Productivity Jam
+            </div></a>
+            <div className={`w-touchscreenW h-touchscreenH bg-lavender flex justify-center transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`}>
+
+
+                <div className='bg-overlay w-innerboxW h-innerboxH '>
+                    <div className='flex justify-end bottom-0 w-innerboxW h-innerboxH'>
+                        <div className="w-innerboxW h-innerboxH text-center">
+                            <h2 className='pr-4 mt-20 font-pixel text-4xl'>Long Break</h2>
+                            <div className="flex justify-evenly pt-36">
+                                <a onClick={() => setLongBreak(1)}><div tabIndex="0" className={` pl-2 size-20 rounded-lg text-center active:bg-violet-700 ${longBreak === 15 ? 'bg-violet-700' : 'bg-buttons'}`}>15</div></a>
+                                <a onClick={() => setLongBreak(20)}><div tabIndex="0" className={` pl-2 size-20 rounded-lg text-center active:bg-violet-700 ${longBreak === 20 ? 'bg-violet-700' : 'bg-buttons'}`}>20</div></a>
+                                <a onClick={() => setLongBreak(25)}><div tabIndex="0" className={` pl-2 size-20 rounded-lg text-center active:bg-violet-700 ${longBreak === 25 ? 'bg-violet-700' : 'bg-buttons'}`}>25</div></a>
+                            </div>
+                            <div className=" flex gap-4 ">
+                                <button onClick={previousPage} className="px-4 py-2 bg-buttons border-4 border-black text-black font-mono text-lg shadow-md hover:bg-violet-700 active:translate-y-1">
+                                    ← Previous
+                                </button>
+                                <button onClick={nextPage} className="px-4 py-2 bg-buttons border-4 border-black text-black font-mono text-lg shadow-md hover:bg-violet-700 active:translate-y-1">
+                                    Next →
+                                </button>
+                            </div>
+                        </div>
+                        <img className={`h-imageH transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`} src='/pixel.png'></img>
+                    </div>
                 </div>
+            </div>
 
-            </div>
-            <div>
-                <button className='bg-slate-950 text-gray-50' onClick={previousPage}>Previous</button>
-
-            </div>
-            <div>
-                <button className='bg-slate-950 text-gray-50' onClick={nextPage}>Next</button>
-            </div>
         </>
     )
 }
