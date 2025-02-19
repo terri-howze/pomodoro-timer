@@ -4,6 +4,7 @@ import { useStateStore } from '@/store/Store';
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { useTimerStore } from '@/store/Store';
 
 
 export default function page() {
@@ -12,27 +13,42 @@ export default function page() {
   const studyTime = 1
   const shortBreak = useStateStore((state) => state.shortBreak)
   const longBreak = useStateStore((state) => state.longBreak)
-  const [timeInMinutes, setTimeInMinutes] = useState(0)
-  const [timeInSeconds, setTimeInSeconds] = useState(0)
   const router = useRouter()
   const resetCycles = useStateStore((state) => state.resetCycles)
   const resetShortBreak = useStateStore((state) => state.resetShortBreak)
   const resetLongBreak = useStateStore((state) => state.resetLongBreak)
+  const { timeRemaining, setTimeRemaining} = useTimerStore()
+  
+  let isPaused = false
   const [visible, setVisible] = useState(false)
   const [timerLabel, setLabel] = useState("")
+ 
+  const resumeTimer = () =>{
+    isPaused = false
+    console.log(isPaused)
+  }
+
+  const pauseTimer = () =>{
+    isPaused = true
+    console.log(isPaused)
+  }
+
 
   function countdownTimer(countdownTime) {
     return new Promise((resolve, reject) => {
       let countdown = countdownTime
 
       const timer = setInterval(() => {
+        if(!isPaused){
         countdown--
-        setTimeInMinutes(Math.floor(countdown / 60))
-        setTimeInSeconds(countdown % 60)
-        if (countdown < 0) {
+        setTimeRemaining(countdown)
+        // setTimeInMinutes(Math.floor(countdown / 60))
+        // setTimeInSeconds(countdown % 60)
+        if (countdown < 1) {
           clearInterval(timer)
           resolve('countdown finished')
         }
+      }
       }, 1000);
     })
   }
@@ -72,8 +88,8 @@ export default function page() {
         <a onClick={homePage}><div className="m-5 font-pixel text-4xl drop-shadow-2xl mb-0">
           Productivity Jam
         </div></a>
-        <a><div>Pause</div></a>
-        <a><div>Resume</div></a>
+       <div><button onClick={pauseTimer}>Pause</button></div>
+        <a onClick={resumeTimer}><div>Resume</div></a>
       </div>
       <div className={`w-touchscreenW h-touchscreenH bg-lavender flex justify-center`}>
 
@@ -84,7 +100,8 @@ export default function page() {
               <h2 className='pr-4 mt-20 font-pixel text-4xl'>{timerLabel}</h2>
               <div className="flex justify-evenly pt-36">
                 <h3 className='font-pixel'>
-                  {timeInMinutes}:{timeInSeconds}
+                  Time Remaining
+                  {Math.floor(timeRemaining / 60)}:{timeRemaining % 60}
                 </h3>
               </div>
             </div>
