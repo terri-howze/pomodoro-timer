@@ -17,59 +17,32 @@ export default function page() {
   const resetCycles = useStateStore((state) => state.resetCycles)
   const resetShortBreak = useStateStore((state) => state.resetShortBreak)
   const resetLongBreak = useStateStore((state) => state.resetLongBreak)
-  const { timeRemaining, setTimeRemaining} = useTimerStore()
-  
-  let isPaused = false
+  const { timeRemaining, setTimeRemaining, isPaused, pauseTimer, resumeTimer} = useTimerStore()
   const [visible, setVisible] = useState(false)
   const [timerLabel, setLabel] = useState("")
  
-  const resumeTimer = () =>{
-    isPaused = false
-    console.log(isPaused)
-  }
+  const pauseTime = () => {
+    pauseTimer()
+    clearInterval(timerId);
+  };
 
-  const pauseTimer = () =>{
-    isPaused = true
-    console.log(isPaused)
-  }
+  // Resume Timer
+  const resumeTime = () => {
+    resumeTimer()
+  };
 
 
-  function countdownTimer(countdownTime) {
-    return new Promise((resolve, reject) => {
-      let countdown = countdownTime
-
-      const timer = setInterval(() => {
-        if(!isPaused){
-        countdown--
-        setTimeRemaining(countdown)
-        // setTimeInMinutes(Math.floor(countdown / 60))
-        // setTimeInSeconds(countdown % 60)
-        if (countdown < 1) {
-          clearInterval(timer)
-          resolve('countdown finished')
-        }
-      }
+  useEffect(() => {
+    if (!isPaused && timeRemaining > 0) {
+      const id = setInterval(() => {
+        setTimeRemaining((prev) => Math.max(prev - 1, 0));
       }, 1000);
-    })
-  }
-
-  async function countdownCall() {
-    for (let i = 1; i <= cycles; i++) {
-      setLabel(`Study Time #${i}`)
-      await countdownTimer(studyTime * 60)
-      if (i !== cycles) {
-        setLabel(`Break #${i}`)
-        await countdownTimer(shortBreak * 60)
-        setLabel(`Break #${i}`)
-      }
+      setTimerId(id);
+      return () => clearInterval(id); // Cleanup interval
     }
-    setLabel("Long Break")
-    await countdownTimer(longBreak * 60)
-    resetCycles()
-    resetShortBreak()
-    resetLongBreak()
-    router.push('/')
-  }
+  }, [isPaused, timeRemaining]);
+
+  
 
   const homePage = () => {
     resetCycles()
@@ -79,6 +52,23 @@ export default function page() {
   }
 
   useEffect(() => {
+    async function countdownCall() {
+      for (let i = 1; i <= cycles; i++) {
+        setLabel(`Study Time #${i}`)
+        await countdownTimer(studyTime * 60)
+        if (i !== cycles) {
+          setLabel(`Break #${i}`)
+          await countdownTimer(shortBreak * 60)
+          setLabel(`Break #${i}`)
+        }
+      }
+      setLabel("Long Break")
+      await countdownTimer(longBreak * 60)
+      resetCycles()
+      resetShortBreak()
+      resetLongBreak()
+      router.push('/')
+    }
     countdownCall(); // ✅ Called inside useEffect to prevent infinite renders
     setTimeout(() => setVisible(true), 100); // Delay for effect
   }, []);
