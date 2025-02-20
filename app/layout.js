@@ -1,17 +1,19 @@
+import '../styles/globals.css';
+import localFont from 'next/font/local';
 
-
-import "../styles/globals.css";
-
+const myFont = localFont({
+  src: '../public/fonts/PixelifySans-Bold.ttf',
+});
 
 export const metadata = {
-  title: "Retro Arcade",
-  description: "A cool app with Press Start 2P font",
+  title: 'Productivity Jam',
+  description: 'A Next.js 15 app using local fonts',
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" >
-      <body>{children}</body>
+    <html lang="en">
+      <body className={myFont.className}>{children}</body>
     </html>
   );
 }

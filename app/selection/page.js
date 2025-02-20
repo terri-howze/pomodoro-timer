@@ -14,6 +14,7 @@ export default function Selection() {
   const setLongBreak = useStateStore((state) => state.setLongBreak)
   const router = useRouter()
   const [visible, setVisible] = useState(false)
+  const [noClick, setnoClick] = useState(false)
 
   useEffect(() => {
     setTimeout(() => setVisible(true), 100); // Delay for effect
@@ -21,22 +22,35 @@ export default function Selection() {
   const nextPage = () => {
     router.push("selection/cycles/")
   }
+  
 
   return (
     <> 
-    <div className="m-5 font-pixel text-4xl drop-shadow-2xl mb-0">
+    <div className="m-5 text-4xl drop-shadow-2xl mb-0">
       Productivity Jam
     </div>
-      <div className="w-touchscreenW h-touchscreenH bg-lavender flex justify-center">
+    <div className={`w-touchscreenW h-touchscreenH bg-lavender flex justify-center`}>
 
-        <div className='bg-overlay w-innerboxW h-innerboxH '>
-          <div className='flex justify-end bottom-0 w-innerboxW h-innerboxH'>
-            <div><h2 className='pr-4 mt-20 font-pixel text-3xl'>Welcome</h2></div>
-            <div className=''><h2>Lets Get Starts</h2><button onClick={nextPage}>Start</button></div>
-            <img className={`h-imageH transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`} src='/pixel.png'></img>
-          </div>
-        </div>
+
+<div className='bg-overlay w-innerboxW h-innerboxH '>
+  <div className='flex justify-end bottom-0 w-innerboxW h-innerboxH'>
+    <div className="w-innerboxW h-innerboxH text-center">
+      <h2 className='pr-4 mt-20  text-4xl'>Welcome </h2>
+      <div className="flex justify-evenly pt-32">
+        <h1 className='text-3xl'>
+          Ready to get Started?
+        </h1>
       </div>
+      <div className='flex justify-evenly pt-20'>
+        <button onClick={nextPage} className='text-3xl outline-double'>Yes</button>
+        {noClick === false ? <button onClick={() => {setnoClick(true)}} className='text-3xl outline-double'>No</button> : 
+        <h1>Too Bad (ˆ𐃷ˆ)</h1>}
+      </div>
+    </div>
+    <img className={`h-imageH transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`} src='/pixel.png'></img>
+  </div>
+</div>
+</div>
     </>
   );
 }

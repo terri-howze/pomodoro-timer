@@ -133,7 +133,7 @@ export default function page() {
         <div className='bg-overlay w-innerboxW h-innerboxH '>
           <div className='flex justify-end bottom-0 w-innerboxW h-innerboxH'>
             <div className="w-innerboxW h-innerboxH text-center">
-              <h2 className='pr-4 mt-20 font-pixel text-4xl'>{timerLabel}</h2>
+              <h2 className='pr-4 mt-20  text-4xl'>{timerLabel}</h2>
               <div className="flex justify-evenly pt-36">
                 <h3 className='font-pixel'>
                   Time Remaining
