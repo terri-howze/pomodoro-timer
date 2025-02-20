@@ -14,14 +14,14 @@ export const useStateStore = create((set) => ({
     //long break state + functions
     longBreak: 0,
     setLongBreak: (longBreakTime) => set({ longBreak: longBreakTime }),
-    resetLongBreak: () => set({ longBreak: 0 })
+    resetLongBreak: () => set({ longBreak: 0 }),
 
-}))
-
-export const useTimerStore = create((set) => ({
+    //Time
     timeRemaining: 0,
     isPaused: false,
     setTimeRemaining: (time) => set({ timeRemaining: time }),
     pauseTimer: () => set({ isPaused: true }),
     resumeTimer: () => set({ isPaused: false }),
-  }))
+
+}))
+
