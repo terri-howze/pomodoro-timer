@@ -17,9 +17,8 @@ export const useStateStore = create((set) => ({
     resetLongBreak: () => set({ longBreak: 0 }),
 
     //Time
-    timeRemaining: 0,
+
     isPaused: false,
-    setTimeRemaining: (time) => set({ timeRemaining: time }),
     pauseTimer: () => set({ isPaused: true }),
     resumeTimer: () => set({ isPaused: false }),
 

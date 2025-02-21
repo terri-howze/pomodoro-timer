@@ -16,11 +16,9 @@ export default function page() {
   const resetCycles = useStateStore((state) => state.resetCycles)
   const resetShortBreak = useStateStore((state) => state.resetShortBreak)
   const resetLongBreak = useStateStore((state) => state.resetLongBreak)
-  //const { isPaused, pauseTimer, resumeTimer } = useTimerStore()
   const [visible, setVisible] = useState(false)
   const [timerLabel, setLabel] = useState("")
-  const setTimeRemaining = useStateStore((state) => state.setTimeRemaining)
-  const timeRemaining = useStateStore((state) => state.timeRemaining)
+  const [timeRemaining, setTimeRemaining] = useState(0)
 
   const resumeTimer = useStateStore((state) => state.resumeTimer)
   const [isPaused, setPaused] = useState(false)
@@ -120,23 +118,38 @@ export default function page() {
   }, []);
   return (
     <>
+
       <div className='flex'>
-        <a onClick={homePage}><div className="m-5 font-pixel text-4xl drop-shadow-2xl mb-0">
+        <a onClick={homePage}><div className="m-5 text-4xl drop-shadow-2xl mb-0 pl-2">
           Productivity Jam
         </div></a>
-        <div><button onClick={pauseTime}>Pause</button></div>
-        <a onClick={resumeTime}><div>Resume</div></a>
+
+        <button onClick={pauseTime} className={`px-4 py-2  pr-6 border-2 border-black text-black  text-2xl shadow-md ${isPaused ? "bg-buttons" : ''} active:bg-buttons`}>
+          Pause
+        </button>
+        <div></div>
+        <button onClick={resumeTime} className={`px-4 py-2  pr-6 border-2 border-black text-black  text-2xl shadow-md ${!isPaused ? "bg-buttons" : ''} active:bg-buttons`}>
+          Resume
+        </button>
+
+
       </div>
+
+
+
       <div className={`w-touchscreenW h-touchscreenH bg-lavender flex justify-center`}>
 
 
         <div className='bg-overlay w-innerboxW h-innerboxH '>
           <div className='flex justify-end bottom-0 w-innerboxW h-innerboxH'>
             <div className="w-innerboxW h-innerboxH text-center">
-              <h2 className='pr-4 mt-20  text-4xl'>{timerLabel}</h2>
-              <div className="flex justify-evenly pt-36">
-                <h3 className='font-pixel'>
-                  Time Remaining
+              <h2 className='pr-4 mt-20 text-4xl'>{timerLabel}</h2>
+              <div className='pt-24'>
+                <h1 className='text-4xl'>Time Remaining</h1>
+              </div>
+              <div className="flex justify-evenly pt-10">
+                <h3 className='text-3xl'>
+
                   {String(Math.floor(timeRemaining / 60)).padStart(2, '0')}:{String(timeRemaining % 60).padStart(2, '0')}
                 </h3>
               </div>
