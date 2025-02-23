@@ -20,7 +20,6 @@ export default function page() {
   const [timerLabel, setLabel] = useState("")
   const [timeRemaining, setTimeRemaining] = useState(0)
 
-  const resumeTimer = useStateStore((state) => state.resumeTimer)
   const [isPaused, setPaused] = useState(false)
   const isPausedRef = useRef(isPaused)
 

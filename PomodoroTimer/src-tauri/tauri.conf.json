@@ -15,7 +15,8 @@
         "title": "pomodorotimer",
         "width": 1024,
         "height": 600,
-        "fullscreen": false
+        "fullscreen": false,
+        "minimizable": false
       }
     ],
     "security": {
