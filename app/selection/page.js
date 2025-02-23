@@ -34,11 +34,14 @@ export default function Selection() {
 
 
         <div className='bg-overlay w-innerboxW h-innerboxH '>
+          <video autoPlay muted loop width={972} height={529} className='fixed opacity-95 '>
+            <source src='/backgroundVideos/PC-LAPTOP.mp4' type='video/mp4' />
+          </video>
           <div className='flex justify-end bottom-0 w-innerboxW h-innerboxH'>
             <div className="w-innerboxW h-innerboxH text-center">
-              <h2 className='pr-4 mt-20  text-4xl'>Welcome </h2>
+              <h2 className='pr-4 mt-20  text-4xl absolute'>Welcome </h2>
               <div className="flex justify-evenly pt-32">
-                <h1 className='text-3xl'>
+                <h1 className='text-3xl absolute'>
                   Ready to get Started?
                 </h1>
               </div>
