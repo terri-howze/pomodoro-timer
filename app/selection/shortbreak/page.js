@@ -33,7 +33,7 @@ export default function longBreak() {
 
     return (
         <>
-            <a onClick={homePage}><div className="m-5 font-pixel text-4xl drop-shadow-2xl mb-0">
+            <a onClick={homePage}><div className="m-5 text-4xl drop-shadow-2xl mb-0">
                 Productivity Jam
             </div></a>
             <div className={`w-touchscreenW h-touchscreenH bg-lavender flex justify-center transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`}>

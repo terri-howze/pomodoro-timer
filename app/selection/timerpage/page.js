@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useRef } from 'react';
 
+
+
 export default function page() {
 
   const cycles = useStateStore((state) => state.cycles)
@@ -18,12 +20,14 @@ export default function page() {
   const resetLongBreak = useStateStore((state) => state.resetLongBreak)
   const [visible, setVisible] = useState(false)
   const [timerLabel, setLabel] = useState("")
-  const [timeRemaining, setTimeRemaining] = useState(0)
+  const timeRemaining = useStateStore((state) => state.timeRemaining)
+  const setTimeRemaining = useStateStore((state) => state.setTimeRemaining)
+  const clearTimer = useStateStore((state) => state.clearTimer)
 
   const [isPaused, setPaused] = useState(false)
   const isPausedRef = useRef(isPaused)
 
-
+//Pause Timer
   const pauseTime = async () => {
     setPaused(true)
   };
@@ -34,6 +38,18 @@ export default function page() {
     countdownTimer(timeRemaining)
   };
 
+  //Return to HomePage
+  const homePage = () => {
+    resetCycles()
+    resetShortBreak()
+    resetLongBreak()
+    clearTimer();
+    setTimeRemaining(0)
+    router.push("/")
+  }
+
+//Updated Paused ref each time isPaused changes, allows me to 
+// access isPuased value within setInterval Function for timer countdown
   useEffect(() => {
     isPausedRef.current = isPaused;
   }, [isPaused]);
@@ -41,23 +57,27 @@ export default function page() {
 
   function countdownTimer(countdownTime) {
     return new Promise((resolve, reject) => {
+      
       let countdown = countdownTime
+      const { setTimer, clearTimer } = useStateStore.getState();
+      clearTimer()
 
-      const timer = setInterval(() => {
+      const intervalId = setInterval(() => {
         if (isPausedRef.current) {
-          return; // Do nothing while paused (interval keeps running)
+          return;
         }
-        countdown--
-        setTimeRemaining(countdown)
-        // setTimeInMinutes(Math.floor(countdown / 60))
-        // setTimeInSeconds(countdown % 60)
+        countdown--;
+        setTimeRemaining(countdown);
+  
         if (countdown < 1) {
-          clearInterval(timer)
-          resolve('countdown finished')
+          clearInterval(intervalId);
+          clearTimer(); // Clear from Zustand
+          resolve('countdown finished');
         }
-
       }, 1000);
-    })
+  
+      setTimer(intervalId); // Store in Zustand
+    });
   }
 
   // Starts a while loop that calls the setInterval function to countdown, it goes through study and break until it reaches the number of cycles selected
@@ -70,15 +90,28 @@ export default function page() {
       setLabel(`Study Time #${cycle}`);
       //await waitForResume(); // NEW: Wait if paused
       await countdownTimer(studyTime * 60);
-
+      if(Notification.permission === 'granted'){
+        new Notification(
+          "Productivity Jam",{
+          body: "Timer Stopped, Break Time!" ,
+          icon:'/favicon/PJ-Logo-Favcon.svg'
+        })
+      }
       if (cycle !== cycles) {
         setLabel(`Break #${cycle}`);
         //await waitForResume(); // NEW: Wait if paused
         await countdownTimer(shortBreak * 60);
+        if(Notification.permission === 'granted'){
+          new Notification(
+            "Productivity Jam",{
+            body: "Break Time Over, Get Back To Studying" ,
+            icon:'/favicon/PJ-Logo-Favcon.svg'
+          })
       }
 
       cycle++; // Move to the next cycle
     }
+  }
 
     setLabel("Long Break");
     // await waitForResume(); // NEW: Wait if paused
@@ -87,8 +120,11 @@ export default function page() {
     resetCycles();
     resetShortBreak();
     resetLongBreak();
+    clearTimer();
+    setTimeRemaining(0)
     router.push('/');
-  }
+  
+}
 
   //Called in conjucntion with the countdown function to check if isPaused is true or not, if it is true it stops the interval
   // function waitForResume() {
@@ -102,22 +138,29 @@ export default function page() {
   //   });
   // }
 
+  useEffect(() => {
+    const minutes = Math.floor(timeRemaining / 60);
+    const seconds = timeRemaining % 60;
+    document.title = `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+  }, [timeRemaining]);
 
 
-  const homePage = () => {
-    resetCycles()
-    resetShortBreak()
-    resetLongBreak()
-    router.push("/")
-  }
 
+
+//Initiates the countdown to start the timer, also fades in picture
   useEffect(() => {
     countdownCall(); // ✅ Called inside useEffect to prevent infinite renders
     setTimeout(() => setVisible(true), 100); // Delay for effect
   }, []);
+
+//Ask for permission to show notifications, for alerting user of timer stops
+if(Notification.permission !== 'granted'){
+  Notification.requestPermission();
+}
+  
   return (
     <>
-
+  
       <div className='flex'>
         <a onClick={homePage}><div className="m-5 text-4xl drop-shadow-2xl mb-0 pl-2">
           Productivity Jam

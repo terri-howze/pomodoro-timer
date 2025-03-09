@@ -21,6 +21,19 @@ export const useStateStore = create((set) => ({
     isPaused: false,
     pauseTimer: () => set({ isPaused: true }),
     resumeTimer: () => set({ isPaused: false }),
+    timeRemaining: 0,
+    setTimeRemaining: (time) => set({ timeRemaining: time}),
+    resetTime: () => set({ timeRemaining: 0 }),
+    timer: null,
+    setTimer: (timer) => set({ timer }),
+    clearTimer: () => set((state) => {
+    if (state.timer) {
+      clearInterval(state.timer);
+    }
+    return { timer: null };
+  }),
+
+
 
 }))
 
