@@ -4,14 +4,16 @@
 
 @font-face {
   font-family: "Press Start 2P", serif;
-  src: url('/fonts/PressStart2P-Regular.ttf?v=1') format('truetype');
+  src: url('/fonts/PressStart2P-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 
 }
+
 :root {
-  background-color: #9D9DEA;
+  background-color: #945E34;
+  overflow: hidden;
 }
 
 @media (prefers-color-scheme: dark) {

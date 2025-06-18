@@ -35,26 +35,26 @@ export default function cycles() {
 
     return (
         <>
-            <a onClick={homePage}><div className="m-5  text-4xl drop-shadow-2xl mb-0">
-                Productivity Jam
-            </div></a>
-            <div className="w-touchscreenW h-touchscreenH bg-lavender flex justify-center">
-
-
-                <div className='bg-overlay w-innerboxW h-innerboxH '>
-                    <div className='flex justify-end bottom-0 w-innerboxW h-innerboxH'>
+            <a onClick={homePage}>
+                <div className="ml-24 mt-5 text-4xl drop-shadow-2xl mb-0 pl-2 flex">
+                    <img src='/PJ Logo.png' className='h-20 -mt-2' ></img>
+                    <h1 className='text-overlay mt-4 ml-4'>Productivity Jam</h1>
+                </div></a>
+            <div className={`flex justify-center`}>
+                <div className={`bg-overlay w-screen h-screen ml-24 mr-24 mt-2 text-lavender `}>
+                    <div className={`flex justify-end bottom-0 w-innerboxW h-innerboxH transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`}>
                         <div className="w-innerboxW h-innerboxH text-center">
                             <h2 className='pr-4 mt-20 text-4xl'>Cycles</h2>
                             <div className="flex justify-evenly pt-24">
-                                <a onClick={() => setCycles(3)}><div tabIndex="0" className={`size-20 flex items-center justify-center rounded-lg text-3xl border-2 border-black active:bg-buttons ${cycles === 3 ? 'bg-buttons' : ''}`}>3</div></a>
-                                <a onClick={() => setCycles(4)}><div tabIndex="0" className={`size-20 flex items-center justify-center rounded-lg text-3xl border-2 border-black active:bg-buttons ${cycles === 4 ? 'bg-buttons' : ''}`}>4</div></a>
-                                <a onClick={() => setCycles(5)}><div tabIndex="0" className={`size-20 flex items-center justify-center rounded-lg text-3xl border-2 border-black active:bg-buttons ${cycles === 5 ? 'bg-buttons' : ''}`}>5</div></a>
+                                <a onClick={() => setCycles(3)}><div tabIndex="0" className={`size-20 flex items-center justify-center rounded-lg text-3xl border-2 border-black active:bg-buttons ${cycles === 3 ? 'bg-buttons text-textColor' : ''}`}>3</div></a>
+                                <a onClick={() => setCycles(4)}><div tabIndex="0" className={`size-20 flex items-center justify-center rounded-lg text-3xl border-2 border-black active:bg-buttons ${cycles === 4 ? 'bg-buttons text-textColor' : ''}`}>4</div></a>
+                                <a onClick={() => setCycles(5)}><div tabIndex="0" className={`size-20 flex items-center justify-center rounded-lg text-3xl border-2 border-black active:bg-buttons  ${cycles === 5 ? 'text-textColor bg-buttons ' : ''}`}>5</div></a>
                             </div>
-                            <div className=" flex justify-evenly pt-20">
-                                <button onClick={previousPage} className="px-4 py-2 bg-buttons border-2 border-black text-black  text-2xl shadow-md  active:bg-buttons">
+                            <div className=" flex justify-evenly pt-20 ">
+                                <button onClick={previousPage} className="px-4 py-2 bg-buttons border-2 border-black text-textColor  text-2xl shadow-md  active:bg-buttons ">
                                     ← Previous
                                 </button>
-                                <button onClick={nextPage} className="px-4 py-2 bg-buttons border-2 border-black text-black  text-2xl shadow-md  active:bg-buttons">
+                                <button onClick={nextPage} className="px-4 py-2 bg-buttons border-2 border-black text-textColor  text-2xl shadow-md  active:bg-buttons">
                                     Next →
                                 </button>
                             </div>

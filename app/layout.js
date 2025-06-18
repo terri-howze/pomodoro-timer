@@ -11,22 +11,22 @@ const myFont = localFont({
 export const metadata = {
   title: 'My app',
   description: 'A Next.js 15 app using local fonts',
-  icons:{
-    icon: '/favicon/PJ-Logo-Favcon.svg'
+  icons: {
+    icon: '/favicon/PJ Logo.png'
   }
 };
 
 export default function RootLayout({ children }) {
 
-  
+
   return (
     <>
-    
-    <html lang="en">
-      <body className={myFont.className}>
-      <TitleUpdate />
-        {children}</body>
-    </html>
+
+      <html lang="en">
+        <body className={myFont.className}>
+          <TitleUpdate />
+          {children}</body>
+      </html>
     </>
   );
 }

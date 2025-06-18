@@ -27,21 +27,19 @@ export default function Selection() {
 
   return (
     <>
-      <div className="m-5 text-2xl drop-shadow-2xl mb-0 pl-2">
-        Productivity Jam
+      <div className="ml-24 mt-5 text-4xl drop-shadow-2xl mb-0 pl-2 flex">
+        <img src='/PJ Logo.png' className='h-20 -mt-2' ></img>
+        <h1 className='text-textColor mt-4 ml-4'>Productivity Jam</h1>
       </div>
-      <div className={`w-touchscreenW h-touchscreenH bg-lavender flex justify-center`}>
-        <div className='bg-overlay w-innerboxW h-innerboxH '>
-          {/* <video autoPlay muted loop width={972} height={529} className='fixed opacity-95 '>
-            <source src='/backgroundVideos/PC-LAPTOP.mp4' type='video/mp4' />
-          </video> */}
-          <div className='flex justify-end bottom-0 w-innerboxW h-innerboxH'>
+      <div className={`flex justify-center`}>
+        <div className='bg-overlay w-screen h-screen ml-24 mr-24 mt-2 text-lavender'>
+          <div className={`flex justify-end bottom-0 w-innerboxW h-innerboxH transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`}>
             <div className="w-innerboxW h-innerboxH text-center">
               <h2 className='pr-4 mt-20  text-4xl'>Welcome </h2>
-              <div className="flex justify-evenly pt-32">
-                <h1 className='text-3xl absolute'>
-                  Ready to get Started?
-                </h1>
+              <div className="justify-evenly pt-32">
+                <h3 className='text-3xl '>
+                  Ready to start studying
+                </h3>
               </div>
               <div className='flex justify-evenly pt-20'>
                 <button onClick={nextPage} className='text-3xl outline-double'>Yes</button>
@@ -49,7 +47,7 @@ export default function Selection() {
                   <h1>Too Bad (ˆ𐃷ˆ)</h1>}
               </div>
             </div>
-            <img className={`h-imageH transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`} src='/pixel.png'></img>
+            <img className={` transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`} src='/Toast.png'></img>
           </div>
         </div>
       </div>

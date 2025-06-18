@@ -27,7 +27,7 @@ export default function page() {
   const [isPaused, setPaused] = useState(false)
   const isPausedRef = useRef(isPaused)
 
-//Pause Timer
+  //Pause Timer
   const pauseTime = async () => {
     setPaused(true)
   };
@@ -48,8 +48,8 @@ export default function page() {
     router.push("/")
   }
 
-//Updated Paused ref each time isPaused changes, allows me to 
-// access isPuased value within setInterval Function for timer countdown
+  //Updated Paused ref each time isPaused changes, allows me to 
+  // access isPuased value within setInterval Function for timer countdown
   useEffect(() => {
     isPausedRef.current = isPaused;
   }, [isPaused]);
@@ -57,7 +57,7 @@ export default function page() {
 
   function countdownTimer(countdownTime) {
     return new Promise((resolve, reject) => {
-      
+
       let countdown = countdownTime
       const { setTimer, clearTimer } = useStateStore.getState();
       clearTimer()
@@ -68,14 +68,14 @@ export default function page() {
         }
         countdown--;
         setTimeRemaining(countdown);
-  
+
         if (countdown < 1) {
           clearInterval(intervalId);
           clearTimer(); // Clear from Zustand
           resolve('countdown finished');
         }
       }, 1000);
-  
+
       setTimer(intervalId); // Store in Zustand
     });
   }
@@ -90,28 +90,28 @@ export default function page() {
       setLabel(`Study Time #${cycle}`);
       //await waitForResume(); // NEW: Wait if paused
       await countdownTimer(studyTime * 60);
-      if(Notification.permission === 'granted'){
+      if (Notification.permission === 'granted') {
         new Notification(
-          "Productivity Jam",{
-          body: "Timer Stopped, Break Time!" ,
-          icon:'/favicon/PJ-Logo-Favcon.svg'
+          "Productivity Jam", {
+          body: "Timer Stopped, Break Time!",
+          icon: '/favicon/PJ Logo.png'
         })
       }
       if (cycle !== cycles) {
         setLabel(`Break #${cycle}`);
         //await waitForResume(); // NEW: Wait if paused
         await countdownTimer(shortBreak * 60);
-        if(Notification.permission === 'granted'){
+        if (Notification.permission === 'granted') {
           new Notification(
-            "Productivity Jam",{
-            body: "Break Time Over, Get Back To Studying" ,
-            icon:'/favicon/PJ-Logo-Favcon.svg'
+            "Productivity Jam", {
+            body: "Break Time Over, Get Back To Studying",
+            icon: '/favicon/PJ Logo.png'
           })
-      }
+        }
 
-      cycle++; // Move to the next cycle
+        cycle++; // Move to the next cycle
+      }
     }
-  }
 
     setLabel("Long Break");
     // await waitForResume(); // NEW: Wait if paused
@@ -123,8 +123,8 @@ export default function page() {
     clearTimer();
     setTimeRemaining(0)
     router.push('/');
-  
-}
+
+  }
 
   //Called in conjucntion with the countdown function to check if isPaused is true or not, if it is true it stops the interval
   // function waitForResume() {
@@ -147,20 +147,20 @@ export default function page() {
 
 
 
-//Initiates the countdown to start the timer, also fades in picture
+  //Initiates the countdown to start the timer, also fades in picture
   useEffect(() => {
     countdownCall(); // ✅ Called inside useEffect to prevent infinite renders
     setTimeout(() => setVisible(true), 100); // Delay for effect
   }, []);
 
-//Ask for permission to show notifications, for alerting user of timer stops
-if(Notification.permission !== 'granted'){
-  Notification.requestPermission();
-}
-  
+  //Ask for permission to show notifications, for alerting user of timer stops
+  if (Notification.permission !== 'granted') {
+    Notification.requestPermission();
+  }
+
   return (
     <>
-  
+
       <div className='flex'>
         <a onClick={homePage}><div className="m-5 text-4xl drop-shadow-2xl mb-0 pl-2">
           Productivity Jam
