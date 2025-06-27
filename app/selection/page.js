@@ -32,7 +32,7 @@ export default function Selection() {
         <h1 className='text-textColor mt-4 ml-4'>Productivity Jam</h1>
       </div>
       <div className={`flex justify-center`}>
-        <div className='bg-overlay w-screen h-screen ml-24 mr-24 mt-2 text-lavender'>
+        <div className='bg-overlay w-screen h-screen ml-24 mr-24 mt-2 text-lavender flex justify-center'>
           <div className={`flex justify-end bottom-0 w-innerboxW h-innerboxH transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`}>
             <div className="w-innerboxW h-innerboxH text-center">
               <h2 className='pr-4 mt-20  text-4xl'>Welcome </h2>
@@ -41,13 +41,13 @@ export default function Selection() {
                   Ready to start studying
                 </h3>
               </div>
-              <div className='flex justify-evenly pt-20'>
+              {/* <div className='flex justify-evenly pt-20'>
                 <button onClick={nextPage} className='text-3xl outline-double'>Yes</button>
                 {noClick === false ? <button onClick={() => { setnoClick(true) }} className='text-3xl outline-double'>No</button> :
                   <h1>Too Bad (ˆ𐃷ˆ)</h1>}
-              </div>
+              </div> */}
+              <h2 className='mt-20 outline-double'>Coming Soon</h2>
             </div>
-            <img className={` transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`} src='/Toast.png'></img>
           </div>
         </div>
       </div>
