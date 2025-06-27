@@ -101,6 +101,7 @@ export default function page() {
         setLabel(`Break #${cycle}`);
         //await waitForResume(); // NEW: Wait if paused
         await countdownTimer(shortBreak * 60);
+        if (typeof window !== "undefined" && "Notification" in window && Notification.permission === 'granted'){
         if (Notification.permission === 'granted') {
           new Notification(
             "Productivity Jam", {
@@ -108,7 +109,7 @@ export default function page() {
             icon: '/favicon/PJ Logo.png'
           })
         }
-
+      }
         cycle++; // Move to the next cycle
       }
     }
@@ -154,9 +155,11 @@ export default function page() {
   }, []);
 
   //Ask for permission to show notifications, for alerting user of timer stops
+  if (typeof window !== "undefined" && "Notification" in window) {
   if (Notification.permission !== 'granted') {
     Notification.requestPermission();
   }
+}
 
   return (
     <>
