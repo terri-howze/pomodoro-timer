@@ -35,11 +35,11 @@ export default function Selection() {
         <div className='bg-overlay w-screen h-screen ml-24 mr-24 mt-2 text-lavender flex justify-center'>
           <div className={`flex justify-end bottom-0 w-innerboxW h-innerboxH transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`}>
             <div className="w-innerboxW h-innerboxH text-center">
-              <h2 className='pr-4 mt-20  text-4xl'>Welcome </h2>
+              {/* <h2 className='pr-4 mt-20  text-4xl'>Welcome </h2> */}
               <div className="justify-evenly pt-32">
-                <h3 className='text-3xl '>
+                {/* <h3 className='text-3xl '>
                   Ready to start studying
-                </h3>
+                </h3> */}
               </div>
               {/* <div className='flex justify-evenly pt-20'>
                 <button onClick={nextPage} className='text-3xl outline-double'>Yes</button>
