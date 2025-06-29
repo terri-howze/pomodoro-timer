@@ -23,6 +23,7 @@ export default function page() {
   const timeRemaining = useStateStore((state) => state.timeRemaining)
   const setTimeRemaining = useStateStore((state) => state.setTimeRemaining)
   const clearTimer = useStateStore((state) => state.clearTimer)
+  const copyrightSymbol = "\u00A9";
 
   const [isPaused, setPaused] = useState(false)
   const isPausedRef = useRef(isPaused)
@@ -165,27 +166,29 @@ export default function page() {
     <>
 
       <div className='flex'>
-        <a onClick={homePage}><div className="m-5 text-4xl drop-shadow-2xl mb-0 pl-2">
-          Productivity Jam
-        </div></a>
-
-        <button onClick={pauseTime} className={`px-4 py-2  pr-6 border-2 border-black text-black  text-2xl shadow-md ${isPaused ? "bg-buttons" : ''} active:bg-buttons`}>
+        <a onClick={homePage}>
+                <div className="ml-24 mt-5 text-4xl drop-shadow-2xl mb-0 pl-2 flex">
+                    <img src='/PJ Logo.png' className='h-20 -mt-2' ></img>
+                    <h1 className='text-overlay mt-4 ml-4'>Productivity Jam</h1>
+                </div></a>
+<div>
+        <button onClick={pauseTime} className={` px-4 py-2  pr-6 border-2 border-black text-black  text-2xl shadow-md ${isPaused ? "bg-buttons" : ''} active:bg-buttons`}>
           Pause
         </button>
-        <div></div>
+        
         <button onClick={resumeTime} className={`px-4 py-2  pr-6 border-2 border-black text-black  text-2xl shadow-md ${!isPaused ? "bg-buttons" : ''} active:bg-buttons`}>
           Resume
         </button>
-
+</div>
 
       </div>
 
 
 
-      <div className={`w-touchscreenW h-touchscreenH bg-lavender flex justify-center`}>
+            <div className={`flex justify-center`}>
 
 
-        <div className='bg-overlay w-innerboxW h-innerboxH '>
+                <div className='bg-overlay w-screen h-mainDivVh ml-24 mr-24 mt-2 text-lavender flex justify-center rounded-lg'>
           <div className='flex justify-end bottom-0 w-innerboxW h-innerboxH'>
             <div className="w-innerboxW h-innerboxH text-center">
               <h2 className='pr-4 mt-20 text-4xl'>{timerLabel}</h2>
@@ -199,11 +202,12 @@ export default function page() {
                 </h3>
               </div>
             </div>
-            <img className={`h-imageH transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`} src='/pixel.png'></img>
           </div>
         </div>
       </div>
-
+      <div className='h-6 align-middle text-center'>
+        <p> Copyright {copyrightSymbol} 2025 Terri Howze</p>
+      </div>
 
     </>
   )

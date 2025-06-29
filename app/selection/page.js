@@ -15,6 +15,7 @@ export default function Selection() {
   const router = useRouter()
   const [visible, setVisible] = useState(false)
   const [noClick, setnoClick] = useState(false)
+  const copyrightSymbol = "\u00A9";
 
   useEffect(() => {
     setTimeout(() => setVisible(true), 100); // Delay for effect
@@ -51,9 +52,9 @@ export default function Selection() {
         </div>
 
       </div>
-      <div className='h-6'>
+      <div className='h-6 align-middle text-center'>
 
-        Test Text
+        <p> Copyright {copyrightSymbol} 2025 Terri Howze</p>
 
       </div>
 
