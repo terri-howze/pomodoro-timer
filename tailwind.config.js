@@ -25,7 +25,7 @@ module.exports = {
         'innerboxW': '972px',
         'innerboxH': '529px',
         'imageH': '590px',
-        'mainDivVh': '99vh'
+        'mainDivVh': '85vh'
       }
     },
   },
