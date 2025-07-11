@@ -36,12 +36,12 @@ export default function longBreak() {
 
     const nextPage = () => {
         if (longBreak != 0) {
-            router.push("timerpage/")
+            router.push("/selection/timerpage")
         }
     }
 
     const previousPage = () => {
-        router.push("shortbreak/")
+        router.push("/selection/shortbreak")
     }
 
     const homePage = () => {
@@ -56,11 +56,11 @@ export default function longBreak() {
     }, []);
     return (
         <>
-            
-                <div onClick={homePage} className="ml-24 mt-5 text-4xl drop-shadow-2xl mb-0 pl-2 flex">
-                    <img src='/PJ Logo.png' className='h-20 -mt-2' ></img>
-                    <h1 className='text-textColor mt-4 ml-4'>Productivity Jam</h1>
-                </div>
+
+            <div onClick={homePage} className="ml-24 mt-5 text-4xl drop-shadow-2xl mb-0 pl-2 flex">
+                <img src='/PJ Logo.png' className='h-20 -mt-2' ></img>
+                <h1 className='text-textColor mt-4 ml-4'>Productivity Jam</h1>
+            </div>
             <div className={`flex justify-center`}>
                 <div className='bg-overlay w-screen h-mainDivVh ml-24 mr-24 mt-2 text-lavender flex justify-center rounded-lg'>
                     <div className='flex justify-end bottom-0 w-innerboxW h-innerboxH'>
