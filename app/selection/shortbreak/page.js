@@ -35,12 +35,12 @@ export default function longBreak() {
     }, []);
     const nextPage = () => {
         if (shortBreak != 0) {
-            router.push("longbreak/")
+            router.push("/selection/longbreak")
         }
     }
 
     const previousPage = () => {
-        router.push("cycles/")
+        router.push("/selection/cycles")
     }
 
     const homePage = () => {
@@ -55,11 +55,11 @@ export default function longBreak() {
 
     return (
         <>
-            
-                <div onClick={homePage} className="ml-24 mt-5 text-4xl drop-shadow-2xl mb-0 pl-2 flex">
-                    <img src='/PJ Logo.png' className='h-20 -mt-2' ></img>
-                    <h1 className='text-textColor mt-4 ml-4'>Productivity Jam</h1>
-                </div>
+
+            <div onClick={homePage} className="ml-24 mt-5 text-4xl drop-shadow-2xl mb-0 pl-2 flex">
+                <img src='/PJ Logo.png' className='h-20 -mt-2' ></img>
+                <h1 className='text-textColor mt-4 ml-4'>Productivity Jam</h1>
+            </div>
             <div className={`flex justify-center`}>
 
                 <div className='bg-overlay w-screen h-mainDivVh ml-24 mr-24 mt-2 text-lavender flex justify-center rounded-lg'>
@@ -67,8 +67,8 @@ export default function longBreak() {
                         <div className="w-innerboxW h-innerboxH text-center">
                             <h2 className='pr-4 mt-20 text-4xl'>Short Break</h2>
                             <div className="flex justify-evenly pt-24">
-                                <div  onClick={() => setShortBreak(4)} tabIndex="0" className={`size-20 flex items-center justify-center rounded-lg text-3xl border-2 border-lavender active:bg-buttons hover:bg-lavender hover:text-textColor ${shortBreak === 4 ? 'bg-buttons text-textColor' : ''}`}>4</div>
-                                <div onClick={() => setShortBreak(5)}tabIndex="0" className={`size-20 flex items-center justify-center rounded-lg text-3xl border-2 border-lavender active:bg-buttons hover:bg-lavender hover:text-textColor ${shortBreak === 5 ? 'bg-buttons text-textColor' : ''}`}>5</div>
+                                <div onClick={() => setShortBreak(4)} tabIndex="0" className={`size-20 flex items-center justify-center rounded-lg text-3xl border-2 border-lavender active:bg-buttons hover:bg-lavender hover:text-textColor ${shortBreak === 4 ? 'bg-buttons text-textColor' : ''}`}>4</div>
+                                <div onClick={() => setShortBreak(5)} tabIndex="0" className={`size-20 flex items-center justify-center rounded-lg text-3xl border-2 border-lavender active:bg-buttons hover:bg-lavender hover:text-textColor ${shortBreak === 5 ? 'bg-buttons text-textColor' : ''}`}>5</div>
                                 <div onClick={() => setShortBreak(6)} tabIndex="0" className={`size-20 flex items-center justify-center rounded-lg text-3xl border-2 border-lavender active:bg-buttons hover:bg-lavender hover:text-textColor ${shortBreak === 6 ? 'bg-buttons text-textColor' : ''}`}>6</div>
                             </div>
                             <div className=" flex justify-evenly pt-20">

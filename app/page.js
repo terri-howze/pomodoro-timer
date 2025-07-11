@@ -31,7 +31,7 @@ export default function Home() {
         Notification.requestPermission();
       }
     }
-    router.push("selection/cycles/")
+    router.push("/selection/cycles")
   }
   const homePage = () => {
     resetCycles()
