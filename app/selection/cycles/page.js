@@ -88,7 +88,11 @@ export default function cycles() {
             </div>
             <div className='h-6 align-middle text-center flex justify-evenly'>
 
-                <p>Copyright {copyrightSymbol} 2025 Terri Howze&nbsp;</p>
+                <p>Copyright {copyrightSymbol} 2025 Terri Howze</p>
+                <div className="flex">
+                    <p><a href="https://github.com/terri-howze/pomodoro-timer">Github</a></p>
+                    <a href="https://github.com/terri-howze/pomodoro-timer"><img width={25} height={25} src="/github.png"></img></a>
+                </div>
                 <p> Designs by <a href='https://www.quintinodesigns.com'>Quintino Designs</a></p>
             </div>
 

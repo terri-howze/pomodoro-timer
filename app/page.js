@@ -15,23 +15,38 @@ export default function Home() {
   const router = useRouter()
   const [visible, setVisible] = useState(false)
   const [noClick, setnoClick] = useState(false)
+  const resetCycles = useStateStore((state) => state.resetCycles)
+  const resetShortBreak = useStateStore((state) => state.resetShortBreak)
+  const resetLongBreak = useStateStore((state) => state.resetLongBreak)
   const copyrightSymbol = "\u00A9";
 
   useEffect(() => {
+
     setTimeout(() => setVisible(true), 100); // Delay for effect
   }, []);
   const nextPage = () => {
     setnoClick(false)
+    if (typeof window !== "undefined" && "Notification" in window) {
+      if (Notification.permission !== 'granted') {
+        Notification.requestPermission();
+      }
+    }
     router.push("selection/cycles/")
   }
-
+  const homePage = () => {
+    resetCycles()
+    resetShortBreak()
+    resetLongBreak()
+    router.push("/")
+  }
 
   return (
     <>
-      <div className="ml-24 mt-5 text-4xl drop-shadow-2xl mb-0 pl-2 flex">
-        <img src='/PJ Logo.png' className='h-20 -mt-2' ></img>
-        <h1 className='text-textColor mt-4 ml-4'>Productivity Jam</h1>
-      </div>
+      <a onClick={homePage}>
+        <div className="ml-24 mt-5 text-4xl drop-shadow-2xl mb-0 pl-2 flex">
+          <img src='/PJ Logo.png' className='h-20 -mt-2' ></img>
+          <h1 className='text-textColor mt-4 ml-4'>Productivity Jam</h1>
+        </div></a>
       <div className={`flex justify-center`}>
         <div className='bg-overlay w-screen h-mainDivVh ml-24 mr-24 mt-2 text-lavender flex justify-center rounded-lg'>
           <div className={`flex justify-end bottom-0 w-innerboxW h-innerboxH transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`}>

@@ -149,11 +149,12 @@ export default function page() {
 
   //Initiates the countdown to start the timer, also fades in picture
   useEffect(() => {
+
     countdownCall(); // ✅ Called inside useEffect to prevent infinite renders
     setTimeout(() => setVisible(true), 100); // Delay for effect
   }, []);
 
-  //Ask for permission to show notifications, for alerting user of timer stops
+
   if (typeof window !== "undefined" && "Notification" in window) {
     if (Notification.permission !== 'granted') {
       Notification.requestPermission();
@@ -208,7 +209,11 @@ export default function page() {
       </div>
       <div className='h-6 align-middle text-center flex justify-evenly'>
 
-        <p>Copyright {copyrightSymbol} 2025 Terri Howze&nbsp;</p>
+        <p>Copyright {copyrightSymbol} 2025 Terri Howze</p>
+        <div className="flex">
+          <p><a href="https://github.com/terri-howze/pomodoro-timer">Github</a></p>
+          <a href="https://github.com/terri-howze/pomodoro-timer"><img width={25} height={25} src="/github.png"></img></a>
+        </div>
         <p> Designs by <a href='https://www.quintinodesigns.com'>Quintino Designs</a></p>
       </div>
 
