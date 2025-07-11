@@ -1,4 +1,0 @@
-{
-  "include": ["/*"],
-  "exclude": ["/_next/*", "/static/*", "/favicon.ico", "/robots.txt"]
-}
