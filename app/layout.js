@@ -9,8 +9,8 @@ const myFont = localFont({
 });
 
 export const metadata = {
-  title: 'My app',
-  description: 'A Next.js 15 app using local fonts',
+  title: 'Productivity Jam',
+  description: 'A peaceful study timer with cozy pixel art. Focus your mind, take gentle breaks, and build better habits—one calm session at a time.',
   icons: {
     icon: '/favicon/PJ Logo.png'
   }

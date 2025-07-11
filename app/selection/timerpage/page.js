@@ -11,7 +11,7 @@ import { useRef } from 'react';
 export default function page() {
 
   const cycles = useStateStore((state) => state.cycles)
-  const studyTime = 1
+  const studyTime = 25
   const shortBreak = useStateStore((state) => state.shortBreak)
   const longBreak = useStateStore((state) => state.longBreak)
   const router = useRouter()
@@ -23,16 +23,16 @@ export default function page() {
   const timeRemaining = useStateStore((state) => state.timeRemaining)
   const setTimeRemaining = useStateStore((state) => state.setTimeRemaining)
   const clearTimer = useStateStore((state) => state.clearTimer)
+  const copyrightSymbol = "\u00A9";
 
   const [isPaused, setPaused] = useState(false)
   const isPausedRef = useRef(isPaused)
 
-  //Pause Timer
+
   const pauseTime = async () => {
     setPaused(true)
   };
 
-  // Resume Timer
   const resumeTime = () => {
     setPaused(false)
     countdownTimer(timeRemaining)
@@ -99,23 +99,21 @@ export default function page() {
       }
       if (cycle !== cycles) {
         setLabel(`Break #${cycle}`);
-        //await waitForResume(); // NEW: Wait if paused
         await countdownTimer(shortBreak * 60);
-        if (typeof window !== "undefined" && "Notification" in window && Notification.permission === 'granted'){
-        if (Notification.permission === 'granted') {
-          new Notification(
-            "Productivity Jam", {
-            body: "Break Time Over, Get Back To Studying",
-            icon: '/favicon/PJ Logo.png'
-          })
+        if (typeof window !== "undefined" && "Notification" in window && Notification.permission === 'granted') {
+          if (Notification.permission === 'granted') {
+            new Notification(
+              "Productivity Jam", {
+              body: "Break Time Over, Get Back To Studying",
+              icon: '/favicon/PJ Logo.png'
+            })
+          }
         }
-      }
         cycle++; // Move to the next cycle
       }
     }
 
     setLabel("Long Break");
-    // await waitForResume(); // NEW: Wait if paused
     await countdownTimer(longBreak * 60);
 
     resetCycles();
@@ -148,44 +146,40 @@ export default function page() {
 
 
 
+
   //Initiates the countdown to start the timer, also fades in picture
   useEffect(() => {
+
     countdownCall(); // ✅ Called inside useEffect to prevent infinite renders
     setTimeout(() => setVisible(true), 100); // Delay for effect
   }, []);
 
-  //Ask for permission to show notifications, for alerting user of timer stops
+
   if (typeof window !== "undefined" && "Notification" in window) {
-  if (Notification.permission !== 'granted') {
-    Notification.requestPermission();
+    if (Notification.permission !== 'granted') {
+      Notification.requestPermission();
+    }
   }
-}
 
   return (
     <>
 
       <div className='flex'>
-        <a onClick={homePage}><div className="m-5 text-4xl drop-shadow-2xl mb-0 pl-2">
-          Productivity Jam
-        </div></a>
-
-        <button onClick={pauseTime} className={`px-4 py-2  pr-6 border-2 border-black text-black  text-2xl shadow-md ${isPaused ? "bg-buttons" : ''} active:bg-buttons`}>
-          Pause
-        </button>
-        <div></div>
-        <button onClick={resumeTime} className={`px-4 py-2  pr-6 border-2 border-black text-black  text-2xl shadow-md ${!isPaused ? "bg-buttons" : ''} active:bg-buttons`}>
-          Resume
-        </button>
+        <a onClick={homePage}>
+          <div className="ml-24 mt-5 text-4xl drop-shadow-2xl mb-0 pl-2 flex">
+            <img src='/PJ Logo.png' className='h-20 -mt-2' ></img>
+            <h1 className='text-textColor mt-4 ml-4'>Productivity Jam</h1>
+          </div></a>
 
 
       </div>
 
 
 
-      <div className={`w-touchscreenW h-touchscreenH bg-lavender flex justify-center`}>
+      <div className={`flex justify-center`}>
 
 
-        <div className='bg-overlay w-innerboxW h-innerboxH '>
+        <div className='bg-overlay w-screen h-mainDivVh ml-24 mr-24 mt-2 text-lavender flex justify-center rounded-lg'>
           <div className='flex justify-end bottom-0 w-innerboxW h-innerboxH'>
             <div className="w-innerboxW h-innerboxH text-center">
               <h2 className='pr-4 mt-20 text-4xl'>{timerLabel}</h2>
@@ -198,10 +192,29 @@ export default function page() {
                   {String(Math.floor(timeRemaining / 60)).padStart(2, '0')}:{String(timeRemaining % 60).padStart(2, '0')}
                 </h3>
               </div>
+              <div className='mt-20'>
+                <button onClick={pauseTime} className={` px-4 py-2 text-2xl border-2 border-lavender hover:bg-lavender hover:text-textColor shadow-md  active:bg-buttons ${isPaused ? "bg-buttons text-textColor" : ''} active:bg-buttons`}>
+                  Pause
+                </button>
+
+                <button onClick={resumeTime} className={`px-4 py-2 text-2xl border-2 border-lavender hover:bg-lavender hover:text-textColor shadow-md  active:bg-buttons ${!isPaused ? "bg-buttons text-textColor" : ''} active:bg-buttons`}>
+                  Resume
+                </button>
+              </div>
             </div>
-            <img className={`h-imageH transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`} src='/pixel.png'></img>
           </div>
+
         </div>
+
+      </div>
+      <div className='h-6 align-middle text-center flex justify-evenly'>
+
+        <p>Copyright {copyrightSymbol} 2025 Terri Howze</p>
+        <div className="flex">
+          <p><a href="https://github.com/terri-howze/pomodoro-timer">Github</a></p>
+          <a href="https://github.com/terri-howze/pomodoro-timer"><img width={25} height={25} src="/github.png"></img></a>
+        </div>
+        <p> Designs by <a href='https://www.quintinodesigns.com'>Quintino Designs</a></p>
       </div>
 
 

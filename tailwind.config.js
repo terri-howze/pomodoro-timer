@@ -24,7 +24,8 @@ module.exports = {
         'touchscreenH': '600px',
         'innerboxW': '972px',
         'innerboxH': '529px',
-        'imageH': '590px'
+        'imageH': '590px',
+        'mainDivVh': '85vh'
       }
     },
   },
