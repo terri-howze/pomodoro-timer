@@ -60,7 +60,7 @@ export default function cycles() {
     return (
         <>
 
-            <div onClick={homePage} className="ml-24 mt-5 text-4xl drop-shadow-2xl mb-0 pl-2 flex">
+            <div onClick={homePage} className="ml-24 mt-5 text-4xl drop-shadow-2xl mb-0 pl-2 flex cursor-pointer">
                 <img src='/PJ Logo.png' className='h-20 -mt-2' ></img>
                 <h1 className='text-textColor mt-4 ml-4'>Productivity Jam</h1>
             </div>
@@ -70,9 +70,9 @@ export default function cycles() {
                         <div className="w-innerboxW h-innerboxH text-center">
                             <h2 className='pr-4 mt-20 text-4xl'>Cycles</h2>
                             <div className="flex justify-evenly pt-24">
-                                <div onClick={() => setCycles(3)} tabIndex="0" className={`size-20 flex items-center justify-center rounded-lg text-3xl border-2 border-lavender active:bg-buttons hover:bg-lavender hover:text-textColor ${cycles === 3 ? 'bg-buttons text-textColor' : ''}`}>3</div>
-                                <div onClick={() => setCycles(4)} tabIndex="0" className={`size-20 flex items-center justify-center rounded-lg text-3xl border-2 border-lavender active:bg-buttons hover:bg-lavender hover:text-textColor ${cycles === 4 ? 'bg-buttons text-textColor' : ''}`}>4</div>
-                                <div onClick={() => setCycles(5)} tabIndex="0" className={`size-20 flex items-center justify-center rounded-lg text-3xl border-2 border-lavender active:bg-buttons  hover:bg-lavender hover:text-textColor ${cycles === 5 ? 'text-textColor bg-buttons ' : ''}`}>5</div>
+                                <div onClick={() => setCycles(3)} tabIndex="0" className={`size-20 flex cursor-pointer items-center justify-center rounded-lg text-3xl border-2 border-lavender active:bg-buttons hover:bg-lavender hover:text-textColor ${cycles === 3 ? 'bg-buttons text-textColor' : ''}`}>3</div>
+                                <div onClick={() => setCycles(4)} tabIndex="0" className={`size-20 flex cursor-pointer items-center justify-center rounded-lg text-3xl border-2 border-lavender active:bg-buttons hover:bg-lavender hover:text-textColor ${cycles === 4 ? 'bg-buttons text-textColor' : ''}`}>4</div>
+                                <div onClick={() => setCycles(5)} tabIndex="0" className={`size-20 flex cursor-pointer items-center justify-center rounded-lg text-3xl border-2 border-lavender active:bg-buttons  hover:bg-lavender hover:text-textColor ${cycles === 5 ? 'text-textColor bg-buttons ' : ''}`}>5</div>
                             </div>
                             <div className=" flex justify-evenly pt-20 ">
                                 <button onClick={previousPage} className="px-4 py-2 text-2xl border-2 border-lavender hover:bg-lavender hover:text-textColor shadow-md  active:bg-buttons ">
@@ -89,11 +89,11 @@ export default function cycles() {
             <div className='h-6 align-middle text-center flex justify-evenly'>
 
                 <p>Copyright {copyrightSymbol} 2025 Terri Howze</p>
-                <div className="flex">
+                <div className=" cursor-pointer flex">
                     <p><a href="https://github.com/terri-howze/pomodoro-timer">Github</a></p>
                     <a href="https://github.com/terri-howze/pomodoro-timer"><img width={25} height={25} src="/github.png"></img></a>
                 </div>
-                <p> Designs by <a href='https://www.quintinodesigns.com'>Quintino Designs</a></p>
+                <p className='cursor-pointer'>  <a href='https://www.quintinodesigns.com'>Designs by Quintino Designs</a></p>
             </div>
 
         </>
