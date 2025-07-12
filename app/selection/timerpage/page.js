@@ -166,7 +166,7 @@ export default function page() {
 
       <div className='flex'>
         <a onClick={homePage}>
-          <div className="ml-24 mt-5 text-4xl drop-shadow-2xl mb-0 pl-2 flex">
+          <div className="ml-24 mt-5 text-4xl drop-shadow-2xl mb-0 pl-2 flex cursor-pointer ">
             <img src='/PJ Logo.png' className='h-20 -mt-2' ></img>
             <h1 className='text-textColor mt-4 ml-4'>Productivity Jam</h1>
           </div></a>
@@ -193,11 +193,11 @@ export default function page() {
                 </h3>
               </div>
               <div className='mt-20'>
-                <button onClick={pauseTime} className={` px-4 py-2 text-2xl border-2 border-lavender hover:bg-lavender hover:text-textColor shadow-md  active:bg-buttons ${isPaused ? "bg-buttons text-textColor" : ''} active:bg-buttons`}>
+                <button onClick={pauseTime} className={` px-4 py-2 cursor-pointer text-2xl border-2 border-lavender hover:bg-lavender hover:text-textColor shadow-md  active:bg-buttons ${isPaused ? "bg-buttons text-textColor" : ''} active:bg-buttons`}>
                   Pause
                 </button>
 
-                <button onClick={resumeTime} className={`px-4 py-2 text-2xl border-2 border-lavender hover:bg-lavender hover:text-textColor shadow-md  active:bg-buttons ${!isPaused ? "bg-buttons text-textColor" : ''} active:bg-buttons`}>
+                <button onClick={resumeTime} className={`px-4 py-2 cursor-pointer text-2xl border-2 border-lavender hover:bg-lavender hover:text-textColor shadow-md  active:bg-buttons ${!isPaused ? "bg-buttons text-textColor" : ''} active:bg-buttons`}>
                   Resume
                 </button>
               </div>
@@ -207,14 +207,14 @@ export default function page() {
         </div>
 
       </div>
-      <div className='h-6 align-middle text-center flex justify-evenly'>
+      <div className='h-6  align-middle text-center flex justify-evenly'>
 
         <p>Copyright {copyrightSymbol} 2025 Terri Howze</p>
-        <div className="flex">
+        <div className=" cursor-pointer flex">
           <p><a href="https://github.com/terri-howze/pomodoro-timer">Github</a></p>
           <a href="https://github.com/terri-howze/pomodoro-timer"><img width={25} height={25} src="/github.png"></img></a>
         </div>
-        <p> Designs by <a href='https://www.quintinodesigns.com'>Quintino Designs</a></p>
+        <p className='cursor-pointer'>  <a href='https://www.quintinodesigns.com'>Designs by Quintino Designs</a></p>
       </div>
 
 

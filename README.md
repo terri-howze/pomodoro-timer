@@ -23,9 +23,9 @@ A cozy and pixel-perfect **Pomodoro Timer**. Stay productive while relaxing to t
     **Icons & Art**: Custom pixel art designed by https://www.quintinodesigns.com/
 
 ## 🛠️ Todo
-    **Music**: Add ambient music/relaxing tracks
-    **Notification**: Add a nptification bell for stop and start studing intervals
-    **Art**: Working on art to fill in empty spaces
+    Music: Add ambient music/relaxing tracks
+    Notification: Add a notification bell for stop and start studing intervals
+    Art: Working on art to fill in empty spaces
 
 ## Reach Me
     You can reach out to me at howzeterri26@gmail.com for any questions or inqueries
