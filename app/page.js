@@ -2,16 +2,9 @@
 import { useStateStore } from "@/store/Store";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Image from 'next/image';
 import { useEffect } from 'react';
 export default function Home() {
-  const cycles = useStateStore((state) => state.cycles)
-  const shortBreak = useStateStore((state) => state.shortBreak)
-  const longBreak = useStateStore((state) => state.longBreak)
-  const [selected, setSelected] = useState('');
-  const setCycles = useStateStore((state) => state.setCycles)
-  const setShortBreak = useStateStore((state) => state.setShortBreak)
-  const setLongBreak = useStateStore((state) => state.setLongBreak)
+  
   const router = useRouter()
   const [visible, setVisible] = useState(false)
   const [noClick, setnoClick] = useState(false)
